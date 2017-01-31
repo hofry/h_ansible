@@ -1,0 +1,26 @@
+- name: install lamp packages
+  apt: name={{ item }} state=present
+  notify:
+  - restart mysql
+  with_items:
+   - mysql-server
+   - php5
+   - php5-mysqlnd
+   - php5-mcrypt
+   - php5-gd
+   - php5-curl
+   - python-mysqldb
+
+- name: enable rewrite
+  command: a2enmod rewrite
+  run_once: true
+
+- name: enable php-mcrypt
+  command: php5enmod mcrypt
+  run_once: true
+
+- name: Start Mysql Service
+  service: name=mysql state=started enabled=yes
+
+- name: Start Apache2 Service
+  service: name=apache2 state=started enabled=yes

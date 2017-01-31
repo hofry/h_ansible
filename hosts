@@ -1,0 +1,5 @@
+[opencase]
+80.93.50.122 ansible_user=hofry ansible_ssh_pass=ootanUV0 ansible_become=true ansible_become_pass=ootanUV0
+
+[tf]
+192.168.1.43 ansible_user=root ansible_ssh_pass=toor

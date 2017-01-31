@@ -1,0 +1,9 @@
+<VirtualHost *:80>
+    ServerName opencase.geekprice.ru
+    DocumentRoot /var/www/html/opencase
+    <Directory /var/www/html/opencase>
+	AllowOverride All
+	Order allow,deny
+	allow from all
+    </Directory>
+</VirtualHost>

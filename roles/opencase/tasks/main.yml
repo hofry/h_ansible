@@ -1,0 +1,15 @@
+- name: make database
+  mysql_db: name=opencase state=present login_user=root login_password=scool87
+
+- name: make mysql user
+  mysql_user: user=opencase password=scool87 priv=opencase.*:ALL host='localhost' state=present login_user=root login_password=scool87
+  
+- name: mkdir workdir
+  file: path=/var/www/html/opencase state=directory
+  
+- name: make vhost
+  template: src=vhost.conf.j2 dest=/etc/apache2/sites-available/opencase.geekprice.ru.conf owner=root group=root mode=644
+  
+- name: enable virthost
+  command: a2ensite opencase.geekprice.ru.conf
+  notify: restart apache2

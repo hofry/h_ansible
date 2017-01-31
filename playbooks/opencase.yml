@@ -1,0 +1,5 @@
+- name: opencase
+  hosts: opencase
+  roles:
+   - lamp
+   - opencase

@@ -1,0 +1,9 @@
+- name: copy ro.sh
+  copy: src=ro.sh dest=/etc/profile.d/ro.sh owner=root group=root mode=600
+
+- name: make history directory
+  file: path=/var/log/history state=directory owner=root group=root mode=700
+
+- name: enable USSER in sshd config
+  lineinfile: dest=/etc/ssh/sshd_config regexp="^AcceptEnv LANG" line="AcceptEnv LANG LC_* USSER"
+  notify: restart sshd
